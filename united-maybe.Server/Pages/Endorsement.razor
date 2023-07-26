@@ -1,0 +1,52 @@
+@page "/endorse"
+@attribute [RenderModeServer]
+
+<PageTitle>Counter</PageTitle>
+
+<h1><img width="200" src="lunkedOn.png" alt="LunkedOn" /></h1>
+<h2>Blazor Server-side (web sockets)</h2>
+
+<RadzenButton 
+    Text="@Subject" 
+    Click="Endorse"
+    ButtonStyle="ButtonStyle.Primary"
+    Icon="add" />
+
+@code {
+
+    private readonly string[] _endorsements = {
+        ".NET Core",
+        "ASP.NET Core",
+        "C#",
+        "Java",
+        "Python",
+        "JavaScript",
+        "HTML/CSS",
+        "SQL",
+        "PostgreSQL",
+        "MongoDB",
+        "Docker",
+        "Kubernetes",
+        "AWS",
+        "Azure",
+        "Git",
+        "React",
+        "Angular",
+        "Vue",
+        "Node.js",
+        "TypeScript"
+    };
+
+    public string? Subject { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Endorse();
+    }
+
+    private void Endorse()
+    {
+        Subject = $"Endorse for {_endorsements[Random.Shared.Next(_endorsements.Length)]}";
+    }
+
+}

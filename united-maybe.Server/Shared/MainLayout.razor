@@ -1,0 +1,30 @@
+﻿@inherits LayoutComponentBase
+
+<RadzenLayout>
+    <RadzenHeader>
+        <RadzenStack
+            Orientation="Orientation.Horizontal"
+            AlignItems="AlignItems.Center"
+            Gap="0">
+            <RadzenSidebarToggle Click="@(() => IsExpanded = !IsExpanded)"/>
+            <RadzenLabel Text="Header"/>
+        </RadzenStack>
+    </RadzenHeader>
+    <RadzenSidebar @bind-Expanded="@IsExpanded">
+        <RadzenPanelMenu>
+            <RadzenPanelMenuItem Text="Home" Icon="home" Path="" Match="NavLinkMatch.All"/>
+            <RadzenPanelMenuItem Text="Fetch Data" Path="showdata" Icon="lightbulb_circle"/>
+            <RadzenPanelMenuItem Text="LunkedOn" Path="endorse" Icon="recommend"/>
+            <RadzenPanelMenuItem Text="Counting" Path="counting" Icon="gavel"/>
+        </RadzenPanelMenu>
+    </RadzenSidebar>
+    <RadzenBody>
+        <div class="rz-p-4">
+            @Body
+        </div>
+    </RadzenBody>
+</RadzenLayout>
+
+@code {
+    public bool IsExpanded = true;
+}
